@@ -1,10 +1,13 @@
 <template>
-  <div class="card">Card</div>
+  <div class="card">{{ job.position }}</div>
 </template>
 
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  props: {
+    job: Object
+  }
 };
 </script>
 
