@@ -51,4 +51,12 @@ img {
   width: 85%;
   margin: 0 auto;
 }
+
+/* Media Queries */
+@media (min-width: 990px) {
+  .container {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
 </style>
