@@ -19,7 +19,7 @@ export default {
     Card
   },
   methods: {
-    ...mapActions(["fetchJobs", "clearFilter"])
+    ...mapActions(["fetchJobs", "filterTags", "clearFilter"])
   },
   computed: mapGetters(["allJobs", "allFilterTags"]),
   created() {
@@ -51,12 +51,17 @@ export default {
   background: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
-  margin: 0 0.5rem 0.5rem 0;
+  margin: 0 0.8rem 1rem 0;
+}
+
+.filterTag:last-of-type {
+  margin-right: 0;
 }
 
 .clear {
   color: hsl(180, 29%, 50%);
   font-weight: 700;
   cursor: pointer;
+  margin-left: 1rem;
 }
 </style>

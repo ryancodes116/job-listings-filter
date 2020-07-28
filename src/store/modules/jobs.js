@@ -17,17 +17,42 @@ const actions = {
   },
   addToFilter({ commit }, e) {
     commit('addFilter', e.target.innerHTML);
-    console.log(`${e.target.innerHTML} added to array`);
+    commit('filterJobs', e.target);
   },
   clearFilter({ commit }) {
     commit('clearFilter');
+    this.fetchJobs();
   },
 };
 
 const mutations = {
   setJobs: (state, jobs) => (state.jobs = jobs),
   addFilter: (state, tag) => state.filterTags.push(tag),
-  clearFilter: (state) => (state.filterTags = []),
+  filterJobs: (state, tag) => {
+    if (tag.classList[1] === 'role') {
+      state.jobs = state.jobs.filter(
+        (job) => job.role.toLowerCase() === tag.innerHTML.toLowerCase()
+      );
+    }
+    if (tag.classList[1] === 'level') {
+      state.jobs = state.jobs.filter(
+        (job) => job.level.toLowerCase() === tag.innerHTML.toLowerCase()
+      );
+    }
+    if (tag.classList[1] === 'languages') {
+      state.jobs = state.jobs.filter((job) =>
+        job.languages.includes(tag.innerHTML)
+      );
+    }
+    if (tag.classList[1] === 'tools') {
+      state.jobs = state.jobs.filter((job) =>
+        job.tools.includes(tag.innerHTML)
+      );
+    }
+  },
+  clearFilter: (state) => {
+    state.filterTags = [];
+  },
 };
 
 export default {

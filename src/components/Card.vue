@@ -14,12 +14,12 @@
     </div>
     <hr class="line" />
     <div class="tags">
-      <div @click="addToFilter" class="tag">{{job.role}}</div>
-      <div @click="addToFilter" class="tag">{{job.level}}</div>
-      <div @click="addToFilter" class="tag" v-for="tool in job.tools" :key="tool">{{tool}}</div>
+      <div @click="addToFilter" class="tag role">{{job.role}}</div>
+      <div @click="addToFilter" class="tag level">{{job.level}}</div>
+      <div @click="addToFilter" class="tag tools" v-for="tool in job.tools" :key="tool">{{tool}}</div>
       <div
         @click="addToFilter"
-        class="tag"
+        class="tag languages"
         v-for="language in job.languages"
         :key="language"
       >{{language}}</div>
