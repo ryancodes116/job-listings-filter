@@ -4,7 +4,7 @@
       <div class="filterTagsContainer">
         <p class="filterTag" v-for="tag in allFilterTags" :key="tag">{{ tag }}</p>
       </div>
-      <p @click="clearFilter" class="clear">Clear</p>
+      <p @click="fetchJobs" class="clear">Clear</p>
     </div>
     <Card v-for="job in allJobs" :key="job.id" :job="job" />
   </div>
@@ -19,7 +19,7 @@ export default {
     Card
   },
   methods: {
-    ...mapActions(["fetchJobs", "filterTags", "clearFilter"])
+    ...mapActions(["fetchJobs", "filterTags"])
   },
   computed: mapGetters(["allJobs", "allFilterTags"]),
   created() {

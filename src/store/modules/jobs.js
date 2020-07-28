@@ -11,17 +11,17 @@ const getters = {
 };
 
 const actions = {
-  async fetchJobs({ commit }) {
+  async fetchJobs({ commit }, e) {
     const response = await axios.get('data.json');
     commit('setJobs', response.data);
+
+    if (e.target.innerHTML.toLowerCase() === 'clear') {
+      commit('clearFilter');
+    }
   },
   addToFilter({ commit }, e) {
     commit('addFilter', e.target.innerHTML);
     commit('filterJobs', e.target);
-  },
-  clearFilter({ commit }) {
-    commit('clearFilter');
-    this.fetchJobs();
   },
 };
 
