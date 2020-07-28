@@ -14,20 +14,35 @@
     </div>
     <hr class="line" />
     <div class="tags">
-      <div class="tag">{{job.role}}</div>
-      <div class="tag">{{job.level}}</div>
-      <div class="tag" v-for="tool in job.tools" :key="tool">{{tool}}</div>
-      <div class="tag" v-for="language in job.languages" :key="language">{{language}}</div>
+      <div @click="addToFilter" class="tag">{{job.role}}</div>
+      <div @click="addToFilter" class="tag">{{job.level}}</div>
+      <div @click="addToFilter" class="tag" v-for="tool in job.tools" :key="tool">{{tool}}</div>
+      <div
+        @click="addToFilter"
+        class="tag"
+        v-for="language in job.languages"
+        :key="language"
+      >{{language}}</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Card",
   props: {
     job: Object
-  }
+  },
+  data: function() {
+    return {
+      filter: []
+    };
+  },
+  methods: {
+    ...mapActions(["addToFilter"])
+  },
+  computed: mapGetters(["allFilterTags"])
 };
 </script>
 
@@ -36,7 +51,6 @@ export default {
   position: relative;
   background-color: #fff;
   border: none;
-
   border-radius: 0.3rem;
   padding: 2.5rem 1.5rem 2rem;
   margin-bottom: 3.5rem;
@@ -117,8 +131,6 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   grid-row-gap: 1rem;
-  /* display: flex;
-  align-items: center; */
 }
 
 .tag {
@@ -127,10 +139,15 @@ export default {
   background: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
+  cursor: pointer;
 }
 
 .tag:last-of-type {
   margin-right: 0;
+}
+
+.tag:hover {
+  opacity: 0.9;
 }
 
 /* Media Queries */
