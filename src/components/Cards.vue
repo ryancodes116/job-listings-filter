@@ -1,8 +1,11 @@
 <template>
   <div class="cards container">
-    <div class="filter" v-if="allFilterTags.length !==0">
+    <div class="filter" v-if="allFilterTags.length !== 0">
       <div class="filterTagsContainer">
-        <p class="filterTag" v-for="tag in allFilterTags" :key="tag">{{ tag }}</p>
+        <div class="filterTag" v-for="tag in allFilterTags" :key="tag">
+          <div class="tagName">{{ tag }}</div>
+          <div class="x-btn">X</div>
+        </div>
       </div>
       <p @click="fetchJobs" class="clear">Clear</p>
     </div>
@@ -47,7 +50,9 @@ export default {
 }
 
 .filterTag {
-  padding: 0.7rem 0.6rem;
+  display: flex;
+  border-radius: 0.3rem;
+  /* padding: 0.7rem 0.6rem; */
   background: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
@@ -56,6 +61,23 @@ export default {
 
 .filterTag:last-of-type {
   margin-right: 0;
+}
+
+.tagName {
+  padding: 0.7rem 0.6rem;
+}
+
+.x-btn {
+  padding: 0.7rem 0.6rem;
+  background: hsl(180, 29%, 50%);
+  color: #fff;
+  cursor: pointer;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.x-btn:hover {
+  background: #000;
 }
 
 .clear {

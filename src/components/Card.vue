@@ -139,6 +139,7 @@ export default {
   background: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
+  border-radius: 0.3rem;
   cursor: pointer;
 }
 
