@@ -4,7 +4,6 @@
       <div class="filterTagsContainer">
         <div class="filterTag" v-for="tag in allFilterTags" :key="tag">
           <div class="tagName">{{ tag }}</div>
-          <div @click="removeTag" class="x-btn">X</div>
         </div>
       </div>
       <p @click="fetchJobs" class="clear">Clear</p>
