@@ -4,7 +4,7 @@
       <div class="filterTagsContainer">
         <div class="filterTag" v-for="tag in allFilterTags" :key="tag">
           <div class="tagName">{{ tag }}</div>
-          <div class="x-btn">X</div>
+          <div @click="removeTag" class="x-btn">X</div>
         </div>
       </div>
       <p @click="fetchJobs" class="clear">Clear</p>
@@ -22,7 +22,11 @@ export default {
     Card
   },
   methods: {
-    ...mapActions(["fetchJobs", "filterTags"])
+    ...mapActions(["fetchJobs", "filterTags", "removeFilter"]),
+    removeTag(e) {
+      const tagName = e.target.previousSibling.innerText;
+      this.removeFilter(tagName);
+    }
   },
   computed: mapGetters(["allJobs", "allFilterTags"]),
   created() {
@@ -52,7 +56,6 @@ export default {
 .filterTag {
   display: flex;
   border-radius: 0.3rem;
-  /* padding: 0.7rem 0.6rem; */
   background: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;

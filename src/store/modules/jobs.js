@@ -23,6 +23,9 @@ const actions = {
     commit('addFilter', e.target.innerHTML);
     commit('filterJobs', e.target);
   },
+  removeFilter({ commit }, tag) {
+    commit('removeTag', tag);
+  },
 };
 
 const mutations = {
@@ -49,6 +52,9 @@ const mutations = {
         job.tools.includes(tag.innerHTML)
       );
     }
+  },
+  removeTag: (state, tagName) => {
+    state.filterTags = state.filterTags.filter((tag) => tag !== tagName);
   },
   clearFilter: (state) => {
     state.filterTags = [];
